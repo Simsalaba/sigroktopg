@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "sigroktopg"
+version = "0.0.1"
+description = "Runs your sigrok-cli executable, collects the data from stdout and sends it to a Postgres database"
+authors = ["Basim Ali Yoshiguchi"]
+license = "MIT"
+include = ["README.md","Makefile"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+psycopg2 = "^2.8.6"
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.scripts]
+sigroktopg = "sigroktopg.sigroktopg:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
