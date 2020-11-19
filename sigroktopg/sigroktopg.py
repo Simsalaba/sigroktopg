@@ -123,12 +123,12 @@ def parseArguments():
         help="Git commit ID of the FW. Defaults to '%(default)s'",
     )
     commandlineparser.add_argument(
-        "--dbUser", default="", help="Database user name"
+        "--dbUser", default="", help="Database user name."
     )
     commandlineparser.add_argument(
         "--db",
         default="",
-        help="Database name. Defaults to '%(default)s'",
+        help="Database name.",
     )
     commandlineparser.add_argument(
         "--deviceId", default="", help="The board's UUID")
@@ -147,7 +147,7 @@ def parseArguments():
     commandlineparser.add_argument(
         "--notes",
         default="N/A",
-        help="Optional information about the test. Defaults to '%(default)s'",
+        help="Optional information about the test.",
     )
     commandlineparser.add_argument(
         "--password", default="", help="DB user password."
@@ -172,21 +172,12 @@ def parseArguments():
     commandlineparser.add_argument("-v", "--verbose", action="store_true",
                                    help="verbose output")
 
-    db = "powerprofilingdb"
-
     args = commandlineparser.parse_args()
-
-    if args.deviceName == "":
-        sys.exit("deviceName argument must be provided")
-
-    if args.user == "":
-        sys.exit("user argument must be provided")
-
-    if args.deviceId == "":
-        sys.exit("deviceId argument must be provided")
-
-    if args.testSessionName == "":
-        sys.exit("testSessionName argument must be provided")
+    for arg in vars(args):
+        if getattr(args, arg) == "":
+            sys.exit("{} argument must be provided".format(arg))
+    if args.testTime == 0:
+        sys.exit("You must set a testTime argument that is greater than 0")
 
     return args
 
