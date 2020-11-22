@@ -1,5 +1,5 @@
 # SigrokToPg - power profiling data collector
-
+![alt text](https://github.com/Simsalaba/sigroktopg/raw/master/sigroktopg.png)
 SigrokToPg is a executable python script that parses stdout data from "sigrok-cli" and pushes it to a PostgreSQL database to be used for power profiling tests of a given device.
 
 ## Installation
